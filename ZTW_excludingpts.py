@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun  6 16:17:35 2019
-
 @author: Zhenying Tan-Wasielewski
 """
 
