@@ -48,18 +48,5 @@ def table (data, count_name, *args):
             finaldf=pd.concat(append_df)
             finaldf = finaldf.set_index(['Category'])
             finaldf.groupby(level=0)
-            
-    else:
-        for column in data:
-            table_df=pd.crosstab(data[column], columns="count")
-            table_df=pd.merge(table_df, table_df.apply(lambda x: round(x/x.sum()*100)), on=column, how='left')
-            table_df[count_name]=table_df[["count_x", "count_y"]].apply(lambda x: '('.join(x.astype(int).astype(str))+'%)', axis=1)
-            table_df["Category"] = column
-            table_df["SubCategory"] = table_df.index
-            table_df=pd.DataFrame(table_df[['Category',"SubCategory",count_name]])
-            append_df.append(table_df)
-            finaldf=pd.concat(append_df)
-            finaldf = finaldf.set_index(['Category'])
-            finaldf.groupby(level=0)
         
     return finaldf
